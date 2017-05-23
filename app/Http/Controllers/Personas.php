@@ -83,9 +83,12 @@ class Personas extends Controller
   {
     if(!$id){
     	return "Usuario no encontrado";
-    }
+    }    
     $persona = Persona::find($id);
-    return $persona->get();
+    $request->except('id');
+    $persona->fill($request->all());
+    $persona->save();
+    return Persona::findOrFail($id)->get();
   }
 
   /**
