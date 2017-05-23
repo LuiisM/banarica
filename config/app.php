@@ -177,7 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Reliese\Coders\CodersServiceProvider::class,
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
     ],
 
     /*
