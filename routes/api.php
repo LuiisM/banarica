@@ -21,3 +21,21 @@ Route::resource('personas', 'Personas',
                 ['except' => ['create']]);
 Route::resource('sedes', 'Sedes',
                 ['except' => ['create']]);
+Route::resource('transportadoras', 'Transportadoras',
+                ['except' => ['create']]);
+Route::resource('ubicaciones', 'Ubicaciones',
+                ['except' => ['create']]);
+Route::resource('sedes', 'Sedes',
+                ['except' => ['create']]);
+Route::resource('sedes', 'Sedes',
+                ['except' => ['create']]);
+Route::resource('sedes', 'Sedes',
+                ['except' => ['create']]);
+Route::resource('sedes', 'Sedes',
+                ['except' => ['create']]);
+Route::resource('sedes', 'Sedes',
+                ['except' => ['create']]);
+Route::resource('sedes', 'Sedes',
+                ['except' => ['create']]);
+Route::resource('sedes', 'Sedes',
+                ['except' => ['create']]);

@@ -24,7 +24,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  *
  * @package App\Models
  */
-class UnidadesProduccione extends Eloquent
+class UnidadesProduccion extends Eloquent
 {
 	const CREATED_AT = 'created';
 	const UPDATED_AT = 'modified';

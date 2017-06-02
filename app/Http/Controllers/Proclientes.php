@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Contacto;
+use App\Models\Procliente;
 
-class Contactos extends Controller
+class Proclientes extends Controller
 {
-      /**
+            /**
    * Display a listing of the resource.
    *
    * @return Response
    */
   public function index()
   {
-    return Contacto::all();
+    return Procliente::all();
   }
 
   /**
@@ -34,14 +34,13 @@ class Contactos extends Controller
    */
   public function store(Request $request)
   {
-    $Contacto = new Contacto;
-    $Contacto->cliente_id = $request->cliente_id;
-    $Contacto->nombre = $request->nombre;
-    $Contacto->telefono = $request->telefono;
-    $Contacto->email = $request->email;
+    $Procliente = new Procliente;
+    $Procliente->cliente_id = $request->cliente_id;
+    $Procliente->producto_id = $request->producto_id;
+    $Procliente->cantidad = $request->cantidad;
 
-    if($Contacto->save()){
-    	return "Contacto creado";
+    if($Procliente->save()){
+    	return "Procliente creada";
     }
     return "Verifique los campos de nuevo";
   }
@@ -55,7 +54,7 @@ class Contactos extends Controller
   public function show($id)
   {
   	if(!$id) return $this->index();
-   	return Contacto::findOrFail($id)->get();
+   	return Procliente::findOrFail($id)->get();
   }
 
   /**
@@ -80,11 +79,11 @@ class Contactos extends Controller
     if(!$id){
     	return "Usuario no encontrado";
     }    
-    $Contacto = Contacto::find($id);
+    $Procliente = Procliente::find($id);
     $request->except('id');
-    $Contacto->fill($request->all());
-    $Contacto->save();
-    return Contacto::findOrFail($id)->get();
+    $Procliente->fill($request->all());
+    $Procliente->save();
+    return Procliente::findOrFail($id)->get();
   }
 
   /**
@@ -96,6 +95,6 @@ class Contactos extends Controller
   public function destroy($id)
   {
   	
-    return $Contacto->destroy($id);
+    return $Procliente->destroy($id);
   }
 }

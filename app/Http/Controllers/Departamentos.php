@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Contacto;
+use App\Models\Departamento;
 
-class Contactos extends Controller
+class Departamentos extends Controller
 {
-      /**
+        /**
    * Display a listing of the resource.
    *
    * @return Response
    */
   public function index()
   {
-    return Contacto::all();
+    return Departamento::all();
   }
 
   /**
@@ -34,14 +34,11 @@ class Contactos extends Controller
    */
   public function store(Request $request)
   {
-    $Contacto = new Contacto;
-    $Contacto->cliente_id = $request->cliente_id;
-    $Contacto->nombre = $request->nombre;
-    $Contacto->telefono = $request->telefono;
-    $Contacto->email = $request->email;
+    $Departamento = new Departamento;
+    $Departamento->nombre = $request->nombre;
 
-    if($Contacto->save()){
-    	return "Contacto creado";
+    if($Departamento->save()){
+    	return "Departamento creada";
     }
     return "Verifique los campos de nuevo";
   }
@@ -55,7 +52,7 @@ class Contactos extends Controller
   public function show($id)
   {
   	if(!$id) return $this->index();
-   	return Contacto::findOrFail($id)->get();
+   	return Departamento::findOrFail($id)->get();
   }
 
   /**
@@ -80,11 +77,11 @@ class Contactos extends Controller
     if(!$id){
     	return "Usuario no encontrado";
     }    
-    $Contacto = Contacto::find($id);
+    $Departamento = Departamento::find($id);
     $request->except('id');
-    $Contacto->fill($request->all());
-    $Contacto->save();
-    return Contacto::findOrFail($id)->get();
+    $Departamento->fill($request->all());
+    $Departamento->save();
+    return Departamento::findOrFail($id)->get();
   }
 
   /**
@@ -96,6 +93,6 @@ class Contactos extends Controller
   public function destroy($id)
   {
   	
-    return $Contacto->destroy($id);
+    return $Departamento->destroy($id);
   }
 }

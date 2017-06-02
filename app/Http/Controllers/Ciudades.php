@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Contacto;
+use App\Models\Ciudad;
 
-class Contactos extends Controller
+class Ciudades extends Controller
 {
-      /**
+                /**
    * Display a listing of the resource.
    *
    * @return Response
    */
   public function index()
   {
-    return Contacto::all();
+    return Ciudad::all();
   }
 
   /**
@@ -34,14 +34,12 @@ class Contactos extends Controller
    */
   public function store(Request $request)
   {
-    $Contacto = new Contacto;
-    $Contacto->cliente_id = $request->cliente_id;
-    $Contacto->nombre = $request->nombre;
-    $Contacto->telefono = $request->telefono;
-    $Contacto->email = $request->email;
+    $Ciudad = new Ciudad;
+    $Ciudad->nombre = $request->nombre;
+    $Ciudad->departamento_id = $request->departamento_id;
 
-    if($Contacto->save()){
-    	return "Contacto creado";
+    if($Ciudad->save()){
+    	return "Ciudad creada";
     }
     return "Verifique los campos de nuevo";
   }
@@ -55,7 +53,7 @@ class Contactos extends Controller
   public function show($id)
   {
   	if(!$id) return $this->index();
-   	return Contacto::findOrFail($id)->get();
+   	return Ciudad::findOrFail($id)->get();
   }
 
   /**
@@ -80,11 +78,11 @@ class Contactos extends Controller
     if(!$id){
     	return "Usuario no encontrado";
     }    
-    $Contacto = Contacto::find($id);
+    $Ciudad = Ciudad::find($id);
     $request->except('id');
-    $Contacto->fill($request->all());
-    $Contacto->save();
-    return Contacto::findOrFail($id)->get();
+    $Ciudad->fill($request->all());
+    $Ciudad->save();
+    return Ciudad::findOrFail($id)->get();
   }
 
   /**
@@ -96,6 +94,6 @@ class Contactos extends Controller
   public function destroy($id)
   {
   	
-    return $Contacto->destroy($id);
+    return $Ciudad->destroy($id);
   }
 }

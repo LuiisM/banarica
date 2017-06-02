@@ -49,11 +49,11 @@ class RecepcionesDetalle extends Eloquent
 
 	public function programacione()
 	{
-		return $this->belongsTo(\App\Models\Programacione::class);
+		return $this->belongsTo(\App\Models\Programacion::class);
 	}
 
 	public function recepcione()
 	{
-		return $this->belongsTo(\App\Models\Recepcione::class);
+		return $this->belongsTo(\App\Models\Recepcion::class);
 	}
 }

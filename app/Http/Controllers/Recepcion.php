@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Contacto;
+use App\Models\Recepcion;
 
-class Contactos extends Controller
+class Recepcion extends Controller
 {
-      /**
+                /**
    * Display a listing of the resource.
    *
    * @return Response
    */
   public function index()
   {
-    return Contacto::all();
+    return Recepcion::all();
   }
 
   /**
@@ -34,14 +34,17 @@ class Contactos extends Controller
    */
   public function store(Request $request)
   {
-    $Contacto = new Contacto;
-    $Contacto->cliente_id = $request->cliente_id;
-    $Contacto->nombre = $request->nombre;
-    $Contacto->telefono = $request->telefono;
-    $Contacto->email = $request->email;
+    $Recepcion = new Recepcion;
+    $Recepcion->codigo_manifiesto = $request->codigo_manifiesto;
+    $Recepcion->transportadoras_finca_id = $request->transportadoras_finca_id;
+    $Recepcion->placa = $request->placa;
+    $Recepcion->fecha_placa = $request->fecha_placa;
+    $Recepcion->hora_salida = $request->hora_salida;
+    $Recepcion->hora_llegada = $request->hora_llegada;
+    $Recepcion->ubicacione_id = $request->ubicacione_id;
 
-    if($Contacto->save()){
-    	return "Contacto creado";
+    if($Recepcion->save()){
+    	return "Recepcion creada";
     }
     return "Verifique los campos de nuevo";
   }
@@ -55,7 +58,7 @@ class Contactos extends Controller
   public function show($id)
   {
   	if(!$id) return $this->index();
-   	return Contacto::findOrFail($id)->get();
+   	return Recepcion::findOrFail($id)->get();
   }
 
   /**
@@ -80,11 +83,11 @@ class Contactos extends Controller
     if(!$id){
     	return "Usuario no encontrado";
     }    
-    $Contacto = Contacto::find($id);
+    $Recepcion = Recepcion::find($id);
     $request->except('id');
-    $Contacto->fill($request->all());
-    $Contacto->save();
-    return Contacto::findOrFail($id)->get();
+    $Recepcion->fill($request->all());
+    $Recepcion->save();
+    return Recepcion::findOrFail($id)->get();
   }
 
   /**
@@ -96,6 +99,6 @@ class Contactos extends Controller
   public function destroy($id)
   {
   	
-    return $Contacto->destroy($id);
+    return $Recepcion->destroy($id);
   }
 }
