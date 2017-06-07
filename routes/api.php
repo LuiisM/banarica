@@ -16,8 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::resource('personas', 'Personas',
+Route::post('login', 'AuthController@login');
+Route::resource('users', 'User',
+                ['except' => ['create']]);
+Route::group(['middleware' => 'jwt.auth'],function(){
+ Route::resource('personas', 'Personas',
                 ['except' => ['create']]);
 Route::resource('sedes', 'Sedes',
                 ['except' => ['create']]);
@@ -25,17 +28,33 @@ Route::resource('transportadoras', 'Transportadoras',
                 ['except' => ['create']]);
 Route::resource('ubicaciones', 'Ubicaciones',
                 ['except' => ['create']]);
-Route::resource('sedes', 'Sedes',
+Route::resource('motonaves', 'Motonaves',
                 ['except' => ['create']]);
-Route::resource('sedes', 'Sedes',
+Route::resource('proclientes', 'Proclientes',
                 ['except' => ['create']]);
-Route::resource('sedes', 'Sedes',
+Route::resource('recepciones', 'Recepciones',
                 ['except' => ['create']]);
-Route::resource('sedes', 'Sedes',
+Route::resource('rechazos', 'Rechazos',
                 ['except' => ['create']]);
-Route::resource('sedes', 'Sedes',
+Route::resource('sucursales', 'Sucursales',
                 ['except' => ['create']]);
-Route::resource('sedes', 'Sedes',
+Route::resource('unidadesproducciones', 'UnidadesProducciones',
                 ['except' => ['create']]);
-Route::resource('sedes', 'Sedes',
+Route::resource('programaciones', 'Programaciones',
                 ['except' => ['create']]);
+Route::resource('departamentos', 'Departamentos',
+                ['except' => ['create']]);
+Route::resource('ciudades', 'Ciudades',
+                ['except' => ['create']]);
+Route::resource('contactos', 'Contactos',
+                ['except' => ['create']]);
+Route::resource('productos', 'Productos',
+                ['except' => ['create']]);
+Route::resource('recepcionesdetalles', 'RecepcionesDetalles',
+                ['except' => ['create']]);
+Route::resource('clientes', 'Clientes',
+                ['except' => ['create']]);
+Route::resource('users', 'Users',
+                ['except' => ['create']]);
+});
+
